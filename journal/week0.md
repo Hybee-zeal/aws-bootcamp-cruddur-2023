@@ -51,10 +51,73 @@ I will display the architectural diagram below, but before that, I will lists th
 - Use as much as possible the aws free tier
 - Momento as a third party caching system
 
-![Architectural diagram](assets/Cruddur - Conceptual Diagram.jpeg)
+![The Architectural diagram](assets/Cruddur%20-%20Conceptual%20Diagram.jpeg)
 
 Kindly click on the url below to find the architectural diagram
 (https://lucid.app/lucidchart/7c696a51-bc90-46ee-8439-4d69a6efa04a/edit?invitationId=inv_2c3aba1c-4acf-4740-a43e-1f1a45518685&page=0_0#)
 
+# Security
 
+The important thing when it comes to security. It is a best practice to always inform the business of the technical risk that can exist if  open vulnerabilities have not been resolved and can potentially affect the business and how will be solved.
+
+## Definition of the cloud security
+Cybersecurity protects data, applications and services associated with cloud environments from both external and internal security threats.
+
+## Why care about cloud security
+- Reducing the impact of the breach
+- Protecting all the system (application, network etc) against malicious data theft
+- Reducing the human error responsible for data leaks
+
+
+## Cloud Security requires practice
+- Understand the complexity of the system
+- Always keep updated with the new services announced
+- Bad hackers are constantly improving as well.
+
+
+## Activate MFA for root account
+
+Root user is the most powerful user in aws environment. It is considered security best practice not to use the root account for our daily task, we should instead     create an IAM user for such purpose
+
+
+## AWS Organization
+Create an organization unit (AWS Organization) AWS Organization allows you to create and manage multiple account. Also it allows to apply governance policies to     accounts or group. There are 2 approce to create the organization:
+
+- Creating business unit (HR Ou, Finance Ou, Engineering Ou)
+- Creating a Standby and Active Pool.
+- 
+SCP (Service Control Policy) are a type of organisational policy that you can use to manage permission in your organisation.
+
+## AWS Cloud Trail
+
+Auditing Service in AWS. Most all the api will be recorded in this service. Cloudtrail will record only the activity in the region you will operate. This service is not free
+
+## IAM
+Recommended to be used for our everyday tasks and can be created using the root account. It has 3 kinds of users:
+
+- IAM user with user and password (make sure MFA is active as well as you activated on root account)
+- Federated user are users federated from an on-premise environment without a password
+- Web Token User
+
+Always Give the least privilege to the users. Don't give more than what it is necessary. This is considered security best practice.
+
+When you are working on AWS, it is a best practice to use the IAM user instead of the Root account. If for some reason the IAM user is compromised, it is simple to solve the problem by removing the policy attached to it/deleting the user himself.
+
+Policies are assigned to either an IAM user or IAM role or IAM group and consist of what the entity can/can not do. For example, a policy could be the possibility to read the content of the s3 bucket.
+
+Access Key and Secret Access key are similar to the user and password (keep it always secret). One reason you need to use it is for example you need to do some calls using CLI. Never hardcode this information on services that it is public expose (for example code on github with access key and secret access key) as bad actors could reuse those access to do bad actions (exploit your application and get sensible information or spin services)In some cases you need to use an IAM Role and attach it to a service or even a user. The difference between Iam user and Iam role is that IAM Role is for a short-term use while IAM User is used when long-term is desired.
+
+# Shared Responsibility Model
+
+Security in AWS cloud is considered a shared responsibility. It means both AWS and the customer both share in the security responsibilities. AWS is responsible for security of the cloud, while the customer is responsible for security in the cloud.
+
+# AWS CLI
+
+There are 2 ways to access the AWS via the CLI. One is installing the aws CLi from you terminal and after providing the secret key, secret access key and the region where you will call the api.
+
+Another way is to use cloudshell from your the aws console. Note that not all the region are available for this functionality. Please check the icon close to the name of you IAM User.
+
+A proof that I configured my AWS CLI is the image below
+
+![AWS CLI](assets/Screenshot%202023-02-18(caller-identity).png)
 
