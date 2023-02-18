@@ -117,7 +117,7 @@ There are 2 ways to access the AWS via the CLI. One is installing the aws CLi fr
 
 Another way is to use cloudshell from your the aws console. Note that not all the region are available for this functionality. Please check the icon close to the name of you IAM User.
 
-A proof that I configured my AWS CLI is the image below
+A proof that I configured my AWS CLI can be found in the image below
 
 ![AWS CLI](assets/Screenshot%202023-02-18(caller-identity).png)
 
